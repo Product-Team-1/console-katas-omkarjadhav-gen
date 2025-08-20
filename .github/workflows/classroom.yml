@@ -1,0 +1,100 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: FizzBuzz test
+      id: fizzbuzz-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: FizzBuzz test
+        setup-command: ''
+        command: gradle -q test --tests com.example.project.FizzBuzzTest
+        timeout: 1
+        max-score: 1
+    - name: Palindrome test
+      id: palindrome-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Palindrome test
+        setup-command: ''
+        command: gradle -q test --tests com.example.project.IsPalindromeTest
+        timeout: 1
+        max-score: 1
+    - name: Reverse string test
+      id: reverse-string-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Reverse string test
+        setup-command: ''
+        command: gradle -q test --tests com.example.project.ReverseStringTest
+        timeout: 1
+        max-score: 1
+    - name: Factorial test
+      id: factorial-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Factorial test
+        setup-command: ''
+        command: gradle -q test --tests com.example.project.FactorialTest
+        timeout: 1
+        max-score: 1
+    - name: Even or Odd test
+      id: even-or-odd-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Even or Odd test
+        setup-command: ''
+        command: gradle -q test --tests com.example.project.EvenOrOddTest
+        timeout: 1
+        max-score: 1
+    - name: Sum array test
+      id: sum-array-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Sum array test
+        setup-command: ''
+        command: gradle -q test --tests com.example.project.SumArrayTest
+        timeout: 1
+        max-score: 1
+    - name: Count vowels test
+      id: count-vowels-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Count vowels test
+        setup-command: ''
+        command: gradle -q test --tests com.example.project.CountVowelsTest
+        timeout: 1
+        max-score: 1
+    - name: Temperature conversion test
+      id: temperature-conversion-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Temperature conversion test
+        setup-command: ''
+        command: gradle -q test --tests com.example.project.TemperatureConversionTest
+        timeout: 1
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        FIZZBUZZ-TEST_RESULTS: "${{steps.fizzbuzz-test.outputs.result}}"
+        PALINDROME-TEST_RESULTS: "${{steps.palindrome-test.outputs.result}}"
+        REVERSE-STRING-TEST_RESULTS: "${{steps.reverse-string-test.outputs.result}}"
+        FACTORIAL-TEST_RESULTS: "${{steps.factorial-test.outputs.result}}"
+        EVEN-OR-ODD-TEST_RESULTS: "${{steps.even-or-odd-test.outputs.result}}"
+        SUM-ARRAY-TEST_RESULTS: "${{steps.sum-array-test.outputs.result}}"
+        COUNT-VOWELS-TEST_RESULTS: "${{steps.count-vowels-test.outputs.result}}"
+        TEMPERATURE-CONVERSION-TEST_RESULTS: "${{steps.temperature-conversion-test.outputs.result}}"
+      with:
+        runners: fizzbuzz-test,palindrome-test,reverse-string-test,factorial-test,even-or-odd-test,sum-array-test,count-vowels-test,temperature-conversion-test
