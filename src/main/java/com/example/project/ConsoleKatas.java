@@ -15,7 +15,7 @@ public class ConsoleKatas {
             } else if (by3) {
                 System.out.println("Fizz");
             } else if (by5) {
-                System.out.println("Buzz");
+                System.out.println("Buz");
             } else {
                 System.out.println(i);
             }
