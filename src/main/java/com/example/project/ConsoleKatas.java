@@ -7,13 +7,30 @@ package com.example.project;
 public class ConsoleKatas {
 
     public static void fizzBuzz() {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
+        for (int i = 1; i <= 100; i++) {
+            boolean by3 = i % 3 == 0;
+            boolean by5 = i % 5 == 0;
+            if (by3 && by5) {
+                System.out.println("FizzBuzz");
+            } else if (by3) {
+                System.out.println("Fizz");
+            } else if (by5) {
+                System.out.println("Buzz");
+            } else {
+                System.out.println(i);
+            }
+        }
     }
 
     public static boolean isPalindrome(String str) {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
+        if (str == null) return false;
+        String s = str.replaceAll("\\s+", "").toLowerCase();
+        int l = 0, r = s.length() - 1;
+        while (l < r) {
+            if (s.charAt(l) != s.charAt(r)) return false;
+            l++; r--;
+        }
+        return true;
     }
 
     public static String reverseString(String str) {
