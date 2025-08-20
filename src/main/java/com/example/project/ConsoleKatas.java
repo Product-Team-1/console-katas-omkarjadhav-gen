@@ -1,9 +1,5 @@
 package com.example.project;
 
-/**
- * Starter code for eight katas.
- * Replace the TODOs with working implementations.
- */
 public class ConsoleKatas {
 
     public static void fizzBuzz() {
@@ -15,7 +11,7 @@ public class ConsoleKatas {
             } else if (by3) {
                 System.out.println("Fizz");
             } else if (by5) {
-                System.out.println("Buz");
+                System.out.println("Buzz");
             } else {
                 System.out.println(i);
             }
@@ -34,37 +30,44 @@ public class ConsoleKatas {
     }
 
     public static String reverseString(String str) {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
+        if (str == null) return null;
+        return new StringBuilder(str).reverse().toString();
     }
 
     public static int factorial(int n) {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
+        if (n < 0) throw new IllegalArgumentException("n must be non-negative");
+        int result = 1;
+        for (int i = 2; i <= n; i++) result *= i;
+        return result;
     }
 
     public static String evenOrOdd(int n) {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
+        return (n % 2 == 0) ? "Even" : "Odd";
     }
 
     public static int sumArray(int[] arr) {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
+        if (arr == null) return 0;
+        int sum = 0;
+        for (int v : arr) sum += v;
+        return sum;
     }
 
     public static int countVowels(String str) {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
+        if (str == null) return 0;
+        int count = 0;
+        String s = str.toLowerCase();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') count++;
+        }
+        return count;
     }
 
     public static double celsiusToFahrenheit(double celsius) {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
+        return (celsius * 9.0 / 5.0) + 32.0;
     }
 
     public static double fahrenheitToCelsius(double fahrenheit) {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
-    }
+        return (fahrenheit - 32.0) * 5.0 / 9.0;
+        }
 }
