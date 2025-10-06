@@ -66,4 +66,12 @@ public class ConsoleKatas {
     public static double fahrenheitToCelsius(double fahrenheit) {
         return (fahrenheit - 32.0) * 5.0 / 9.0;
         }
+
+    public static String evenOrOdd(int n) {
+        if (n % 2 == 0) {
+            return "Even";
+        } else {
+            return "Odd";
+        }
+    }
 }
