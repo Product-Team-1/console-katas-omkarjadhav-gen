@@ -42,7 +42,7 @@ public class ConsoleKatas {
     }
 
     public static String evenOrOdd(int n) {
-        return (n % 2 == 1) ? "Even" : "Odd";
+        return (n % 2 == 0) ? "Even" : "Odd";
     }
 
     public static int sumArray(int[] arr) {
